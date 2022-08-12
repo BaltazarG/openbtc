@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend_v1.Models.DataModels
 {
-    public class Curso : BaseEntity
+    public class Course : BaseEntity
     {
         [Required, StringLength(50)]
         public string Name { get; set; } = string.Empty;
@@ -12,20 +12,19 @@ namespace backend_v1.Models.DataModels
         public string ShortDescription { get; set; } = string.Empty;
 
         [Required]
-        public string LongDescription { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+
+     
+        [Required]
+        public Level Level { get; set; } = Level.Basic;
 
         [Required]
-        public string TargetAudiences { get; set; } = string.Empty;
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
+
 
         [Required]
-        public string Objectives { get; set; } = string.Empty;
+        public Chapter Chapter { get; set; } = new Chapter();
 
-        [Required]
-        public string Requirements { get; set; } = string.Empty;
-
-        [Required]
-        public Level Level { get; set; }
-
-        
-    }
+        public ICollection<Student> Students { get; set; } = new List<Student>();
+    }       
 }
